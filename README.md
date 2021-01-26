@@ -36,6 +36,6 @@ reference materials outside of what's provided in this repository.
 <hr>
 <br>
 <p align="center">
-  <a href="https://www.siam.org/conferences/cm/conference/cse21"><img src="./images/CSE21_logo_500X105.png" width="200" alt="CSE21"></a><br><br>
+  <a href="https://www.siam.org/conferences/cm/conference/cse21"><img src="./images/CSE21_logo_500X105.png" width="400" alt="CSE21"></a><br><br>
   <a href="https://www.olcf.ornl.gov/"><img src="./images/olcf_logo.png" width="400" alt="Oak Ridge Leadership Computing Facility"></a>
 </p>
