@@ -2,7 +2,7 @@
 
 When writing a code to be run on a hybrid compute system (i.e., one with both CPUs and GPUs) such as Summit, you must consider that the CPU and GPU are separate processors with separate memory associated with them. As such, when running a program on this kind of system, control shifts between the CPU and GPU throughout the code and (because of the separate memory) data must be passed back and forth between the two processors as needed.
 
-In this challenge, you will learn how to perform these data transfers with a simple CUDA vector addition program. The only parts of the code that are missing are the data transfers between CPU and GPU. Your task will be to look up the `cudaMemcpy` API and add in the required data transfers.
+In this challenge, you will learn how to perform these data transfers with a simple CUDA vector addition program. The only parts of the code that are missing are the data transfers between CPU and GPU. Your task will be to look up the `cudaMemcpy` API call and add in the required data transfers.
 
 ## Basic Outline of the Code
 
@@ -23,7 +23,7 @@ The `vector_addition.cu` code is well documented with comments, but the basic ou
 Before getting started, you'll need to make sure you're in the `GPU_Data_Transfers/` directory:
 
 ```
-$ cd ~/SC20_HandsOn_with_Summit/challenges/GPU_Data_Transfers/
+$ cd ~/CSE21_HandsOn_with_Summit/challenges/GPU_Data_Transfers/
 ```
 
 There are two places in the `vector_addition.cu` code (identified with the word `TODO`) where data transfers must be added. Find these two places and add in the necessary data transfers by looking up the `cudaMemcpy` API call (use a Google search for this).
