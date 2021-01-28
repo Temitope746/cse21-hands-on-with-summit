@@ -28,9 +28,10 @@ Next, you will need to find the PGI compiler flag needed to compile the code wit
 First, make sure you're in the `Find_the_Compiler_Flag` directory:
 
 ```
-$ cd ~/SC20_HandsOn_with_Summit/challenges/Find_the_Compiler_Flag
+$ cd ~/CSE21_HandsOn_with_Summit/challenges/Find_the_Compiler_Flag
 ```
 
+Ok, if you haven't done so already, go find the compiler flag...
 Ok, now that you think you found the correct compiler flag, add it to the end of the `CFLAGS = -Minfo=all` line in the Makefile. Then, compile the code:
 
 ```
@@ -69,5 +70,7 @@ But did you run on the CPU or GPU? An easy way to tell is using NVIDIA's profile
                    31.17%  181.98us         1  181.98us  181.98us  181.98us  [CUDA memcpy DtoH]
                     6.57%  38.368us         1  38.368us  38.368us  38.368us  main_24_gpu
 ```
+
+If you need help, don't be afraid to ask. If you were successful, congratulations! You just ran a program on a GPU in one of the fastest supercomputers in the world!
 
 
