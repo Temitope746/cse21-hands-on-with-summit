@@ -1,6 +1,6 @@
 # Access Ascent and Clone Repository
 
-Please follow the instructions below to login to OLCF's Ascent High Performance Compute (HPC) system and grab a copy of the code we'll be using.
+Please follow the instructions below to login to OLCF's Ascent compute system and grab a copy of the code we'll be using.
 
 
 ## Step 1: Use the username and password that you setup for Ascent to login. 
@@ -21,13 +21,13 @@ In order to continue with the other challenges, you will need to `clone` a copy 
 
 ```
 $ cd /ccsopen/home/username
-$ git clone https://github.com/olcf/SC20_HandsOn_with_Summit.git
+$ git clone https://github.com/olcf/cse21-hands-on-with-summit.git
 ```
 You can list the files in your current directory to see the repository directory: 
 
 ```
 [username@login1.ascent ~]$ ls
-SC20_HandsOn_with_Summit
+cse21-hands-on-with-summit
 ```
 
 > NOTE: `git` itself is different than GitHub. It is a tool that developers install locally to manage version control and interact with remote code-hosting sites like GitHub.
@@ -35,7 +35,7 @@ SC20_HandsOn_with_Summit
 Now move into that directory:
 
 ```
-$ cd SC20_HandsOn_with_Summit
+$ cd cse21-hands-on-with-summit
 ```
 
 Congratulations! You've completed your first challenge and can now move on to other [challenges](../). Feel free to jump around to the ones you find most interesting.
