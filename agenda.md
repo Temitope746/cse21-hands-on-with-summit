@@ -1,10 +1,13 @@
 # Agenda
 
-|                         What                         |      When     |
-|:-----------------------------------------------------|:-------------:|
-| Welcome Address                                      | 11:00 - 11:05 |
-| Intro to the Oak Ridge Leadership Computing Facility | 11:05 - 11:15 |
-| Introduction to the Summit supercomputer             | 11:15 - 11:30 |
-| Using the Summit supercomputer                       | 11:30 - 12:00 |
-| Hands-On Challenges                                  | 12:00 - 2:55  |
-| Closing Remarks                                      |  2:55 - 3:00  |
+|                         What                         |  When (CST)       |
+|:-----------------------------------------------------|:-----------------:|
+| Welcome Address                                      | 2:15 PM - 2:20 PM |
+| Intro to the Oak Ridge Leadership Computing Facility | 2:20 PM - 2:30 PM |
+| Introduction to the Summit supercomputer             | 2:30 PM - 2:45 PM |
+| Using the Summit supercomputer                       | 2:45 PM - 3:15 PM |
+| Hands-On Challenges                                  | 3:15 PM - 3:55 PM |
+| Break                                                | 3:55 PM - 4:15 PM |
+| Hands-On Challenges (continued)                      | 4:15 PM - 5:50 PM |
+| Closing Remarks                                      | 5:50 PM - 5:55 PM |
+
