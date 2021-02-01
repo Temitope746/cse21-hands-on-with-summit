@@ -9,7 +9,7 @@ In this challenge, you will be given a program that initilizes two matrices with
 Before getting started, you'll need to make sure you're in the `GPU_Matrix_Multiply/` directory:
 
 ```
-$ cd ~/SC20_HandsOn_with_Summit/challenges/GPU_Matrix_Multiply/
+$ cd ~/CSE21_HandsOn_with_Summit/challenges/GPU_Matrix_Multiply/
 ```
 
 Look in the code `cpu_gpu_dgemm.c` and find the `TODO` section and add in the `cublasDgemm` call.
@@ -25,8 +25,10 @@ First, you'll need to make sure your programming environment is set up correctly
 ```c
 $ module load essl
 $ module load cuda
+$ module load pgi
 ```
 
+(The PGI module is needed because we use the PGI compiler (`pgcc`) in the Makefile.) 
 Then, try to compile the code:
 
 ```c
@@ -43,4 +45,4 @@ Once you've successfully compiled the code, try running it.
 $ bsub submit.lsf
 ```
 
-If the CPU and GPU give the same results, you will see the message `__SUCCESS__`. If you do not receive this message, try to identify the problem. As always, if you need help, make sure to ask.
+If the CPU and GPU give the same results, you will see the message `__SUCCESS__` in the output file. If you do not receive this message, try to identify the problem. As always, if you need help, make sure to ask.
