@@ -83,7 +83,7 @@ The `default` clause allows you to set the default value of privacy for variable
 Ok, now let's compile and run the code. First, make sure you're in the correct directory:
 
 ```
-$ cd ~/SC20_HandsOn_with_Summit/challenges/OpenMP_Basics/hello_world
+$ cd ~/CSE21_HandsOn_with_Summit/challenges/OpenMP_Basics/hello_world
 ```
 
 Then, load the gcc compiler (if it's not already in your environment):
@@ -108,7 +108,7 @@ Now we're ready to run! To do so, issue the command:
 bsub submit.lsf
 ```
 
-You can view the status of your job with the `jobstat -u USERNAME` command. While you're waiting for the job to finish, take a look at the `submit.lsf` script you used to submit your job. The environment `OMP_NUM_THREADS` can be used to set the number of OpenMP threads to be spawned in the parallel region. It's currently set to 4, but you can change it and re-run to see the results from different numbers of OpenMP threads.
+You can view the status of your job with the `jobstat -u USERNAME` command. While you're waiting for the job to finish, take a look at the `submit.lsf` script you used to submit your job. The environment variable `OMP_NUM_THREADS` can be used to set the number of OpenMP threads to be spawned in the parallel region. It's currently set to 4, but you can change it and re-run to see the results from different numbers of OpenMP threads.
 
 Once your job is complete, you should have a file called `hello_test.JOBID`, where `JOBID` is the unique ID assigned to your job. This file will include the date, the output from the program, and some basic information about the job itself (below the dashed horizontal line). The program output should look something like this:
 
@@ -146,12 +146,6 @@ C[0] = A[0] + B[0] = 1 + 2 = 3
 C[1] = A[1] + B[1] = 1 + 2 = 3
 ...
 ```
-
-<br>
-<center>
-<img src="./vector_addition.png" style="width:60%">
-</center>
-<br>
 
 As you can see, calculating element 0 (involving only elements `A[0], B[0], and C[0]`) does not affect the calculation of element 1 (involving only elements `A[1], B[1], and C[1]`), or the calculation of any other elements. So, the calculations are all "independent". 
 
@@ -231,7 +225,7 @@ So, how do we accomplish this? Well, we could manually create loop bounds (e.g.,
     }  
 ```
 
-The `#pragma omp for` instructs the compiler to distribute the loop iterations (of the loop following the `#pragma`) among the spawned OpenMP threads (i.e., the threads spawned within the `omp parallel` region surrounding the `omp for`). These two separate directives can actaully be written as a single compound directive as follows:
+The `#pragma omp for` instructs the compiler to distribute the loop iterations (of the loop following the `#pragma`) among the spawned OpenMP threads (i.e., the threads spawned within the `omp parallel` region surrounding the `omp for`). These two separate directives can actually be written as a single compound directive as follows:
 
 ```c
 #pragma omp parallel for default(none) shared(A, B, C)
@@ -248,7 +242,7 @@ The version of the code included in this directory already has the directives ab
 Ok, now let's compile and run the code. First, make sure you're in the correct directory:
 
 ```
-$ cd ~/SC20_HandsOn_with_Summit/challenges/OpenMP_Basics/vector_addition
+$ cd ~/CSE21_HandsOn_with_Summit/challenges/OpenMP_Basics/vector_addition
 ```
 
 Then, load the gcc compiler (if it's not already in your environment):
@@ -271,7 +265,7 @@ Now, we're ready to run! To do so, issue the command:
 bsub submit.lsf
 ```
 
-You can view the status of your job with the `jobstat -u USERNAME` command. While you're waiting for the job to finish, take a look at the `submit.lsf` script you used to submit your job. The environment `OMP_NUM_THREADS` can be used to set the number of OpenMP threads that are spawned in the parallel region. It's originally set to 4, but you can change it and re-run to see the results from different numbers of OpenMP threads.
+You can view the status of your job with the `jobstat -u USERNAME` command. While you're waiting for the job to finish, take a look at the `submit.lsf` script you used to submit your job. The environment variable `OMP_NUM_THREADS` can be used to set the number of OpenMP threads that are spawned in the parallel region. It's originally set to 4, but you can change it and re-run to see the results from different numbers of OpenMP threads.
 
 Once your job is complete, you should have a file called `vec_add.JOBID`, where `JOBID` is the unique ID assigned to your job. This file will include the date, the output from the program, and some basic information about the job itself (below the dashed horizontal line). The program output should look something like this:
 
@@ -280,7 +274,7 @@ Number of OpenMP threads: 004
 Elapsed Time (s)        : 0.288272
 ```
 
-As you can see, the output is simply the total number of OpenMP threads spawned in the parallel region, and the time taken to complete the vector addition loop. As mentioned above, you are encouraged to re-run the code with different numbers of OpenMP threads to see how it affects the total run time. 
+As you can see, the output is simply the total number of OpenMP threads spawned in the parallel region and the time taken to complete the vector addition loop. As mentioned above, you are encouraged to re-run the code with different numbers of OpenMP threads to see how it affects the total run time. 
 
 ## Summary
 
