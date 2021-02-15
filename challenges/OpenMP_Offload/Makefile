@@ -1,16 +1,19 @@
-COMP = xlc_r
-FLAGS = -qsmp=omp -qoffload
+COMP  = xlc_r
+FLAGS = -qsmp=omp
 
-vec_add: vector_addition.o
-	$(COMP) $(FLAGS) vector_addition.o -o vec_add
+INCLUDES  = -I${OLCF_ESSL_ROOT}/include
+LIBRARIES = -L${OLCF_ESSL_ROOT}/lib64 -lessl
 
-vector_addition.o: vector_addition.c
-	$(COMP) $(FLAGS) -c vector_addition.c
+matrix_multiply: matrix_multiply.o
+	${COMP} ${FLAGS} ${LIBRARIES} matrix_multiply.o -o matrix_multiply
+
+matrix_multiply.o: matrix_multiply.c
+	${COMP} ${FLAGS} ${INCLUDES} -c matrix_multiply.c
 
 .PHONY: clean cleanall
 
 clean:
-	rm -f vec_add *.o
+	rm -f matrix_multiply *.o
 
 cleanall:
-	rm -f vec_add *.o add_vec_ompGPU*
+	rm -f matrix_multiply *.o
