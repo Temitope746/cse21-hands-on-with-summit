@@ -8,7 +8,7 @@ In this challenge, we will use a matrix-multiplication code to understand the ve
 
 In the following (serial) C code, we multiply two matrices of random numbers manually in a loop and then again using a call to the BLAS library call `cblas_dgemm`. The call to the math library serves two purposes; it gives us a correct answer to test our own results against, and (by timing it) it gives us a baseline time-to-solution to measure our own performance against.
 
-```
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -137,14 +137,14 @@ The first thing we'll look at is the `target` construct, which allows an executa
 
 From the [OpenMP 4.5 Specification](https://www.openmp.org/wp-content/uploads/openmp-4.5.pdf),
 
-```
+```c
 #pragma omp target [clause[ [,] clause] ... ] new-line
 structured-block
 ``` 
 
 So for our matrix-multiply loop, we would want something like this (where we'll need to change the placeholders for the clauses):
 
-```
+```c
     #pragma omp target [clause[ [,] clause] ... ]
     {
 
@@ -164,7 +164,7 @@ So for our matrix-multiply loop, we would want something like this (where we'll 
 
 Now we can replace the clause placeholders with `map` clauses to tell the compiler how to transfer the necessary data to and from the GPU. From the [OpenMP 4.5 Specification](https://www.openmp.org/wp-content/uploads/openmp-4.5.pdf),
 
-```
+```c
 map([ [map-type-modifier[,]] map-type : ] list)
 ```
 
@@ -178,14 +178,14 @@ Before adding in these map clauses, we should think about what data needs to be 
 
 So the `map` clauses we'll need to append to the `target` construct are
 
-```
+```c
 map(to:A[0:N*N],B[0:N*N]) map(tofrom:C[0:N*N])
 ```
 
 where the "map-type" `to` tells the compiler to copy data to the GPU when the target region is encountered, and the "map-type" `tofrom` tells the compiler to copy data to the GPU when the target region is encountered and also to copy data back to the CPU when the end of the target region is encountered (e.g., the ending curly brace in the `#pragma omp target` region in this case). The range of the arrays in the `map` clauses should be read as `[<starting_index>:<number_of_indices_to_transfer>]`. Ok, now let's add these clauses into our code:
 
 
-```
+```c
     #pragma omp target map(to:A[:N*N],B[:N*N]) map(tofrom:C[:N*N])
     {
     
@@ -207,7 +207,7 @@ At this point, we have created a target region and told the compiler to offload 
 
 To truly take advantage of the GPU, we'll need to add the `teams`, `distribute`, and `parallel for` constructs. The `teams` construct creates a league of thread teams (essentially a "grid" of "thread blocks"), the `distribute` construct distributes the iterations of a loop across the master threads of the thread teams (essentially across the "thread blocks"), and the parallel loop construct distributes the loop iterations (given to each team) across the threads of the teams. These constructs can be combined in a single directive, and places inside the `target` region as follows:
 
-```
+```c
     #pragma omp target map(to:A[:N*N],B[:N*N]) map(tofrom:C[:N*N])
     {
 
@@ -229,19 +229,19 @@ To truly take advantage of the GPU, we'll need to add the `teams`, `distribute`,
 ### Add OpenMP directives to the serial code, compile, and run
 First, makes sure you're in the `OpenMP_Offload` challenge directory:
 
-```
+```bash
 $ cd ~/CSE21_HandsOn_with_Summit/challenges/OpenMP_Offload
 ```
 
 Then load the following modules:
 
-```
+```bash
 $ module load xl cuda essl
 ```
 
 Now add the OpenMP directives above to the serial version of the code. You'll also need to add XL compiler's `-qoffload` flag to the end of the `FLAGS` variable in the `Makefile`. Once you've done this, just issue the command `make`. Once you've successfully compiled the code, submit the job as follows:
 
-```
+```bash
 $ bsub submit.lsf
 ```
 
@@ -257,7 +257,7 @@ From the results, we can see we've achieved a 350x speedup relative to our seria
 
 However, in our current version of the code, we are only parallelizing the outermost `for` loop in the triply-nested loop, but the middle loop can also be parallelized (it's possible to parallelize the innermost loop too but we will not do so here). This can be accomplished in multiple ways, but for simplicity, we'll just append `collapse(2)` to the `parallel for` directive:
 
-```
+```c
     #pragma omp target map(to:A[:N*N],B[:N*N]) map(tofrom:C[:N*N])
     {
 
