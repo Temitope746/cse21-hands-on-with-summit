@@ -245,7 +245,7 @@ Now add the OpenMP directives above to the serial version of the code. You'll al
 $ bsub submit.lsf
 ```
 
-You can monitor the progress of your job by issuing the command `jobstat -u USERNAME`, where `USERNAME` should be replaces with your username. Once the job finishes, you can find the result in the output file, `mat_mul.JOBID`. If successful, the results should show the timing output of the job, which should look something similar to this:
+You can monitor the progress of your job by issuing the command `jobstat -u USERNAME`, where `USERNAME` should be replaced with your username. Once the job finishes, you can find the result in the output file, `mat_mul.JOBID`. If successful, the results should show the timing output of the job, which should look something similar to this:
 
 ```
 Elapsed time total (s)  : 74.04765627099914
@@ -286,7 +286,7 @@ Elapsed time library (s): 50.74522275100026
 
 ## Summary
 
-So with minimal changes to the code, we were able to get a significant speedup of our matrix-multiply code. There is, of course, still some tuning that could be done (e.g. changing the number of teams, threads per team, etc.) for an even larger speedup, but the real purpose of this challenge was simply to give the participant a flavor of how OpenMP diretives can be used to accelerate a code using a GPU.  
+So with minimal changes to the code, we were able to get a significant speedup of our matrix-multiply code. There is, of course, still some tuning that could be done (e.g. changing the number of teams, threads per team, etc.) for an even larger speedup, but the real purpose of this challenge was simply to give the participant a flavor of how OpenMP directives can be used to accelerate a code using a GPU.  
 
 It should be noted that the directives covered in this short challenge really only scratch the surface of the GPU offload functionality in the OpenMP specification. If you'd like to learn more, please visit [https://www.openmp.org/specifications/](https://www.openmp.org/specifications/).
 
