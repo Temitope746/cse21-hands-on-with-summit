@@ -71,6 +71,7 @@ int main(int argc, char *argv[])
 	cublasHandle_t handle;
 	cublasCreate(&handle);
 
+
 	/************************************************************/
 	/* TODO: Look up the cublasDgemm routine and add it here to */
 	/*       perform a matrix multiply on the GPU               */
